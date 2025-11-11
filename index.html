@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Registro de Usuarios</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1, h2 {
+      color: #333;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input {
+      margin: 5px;
+      padding: 8px;
+      width: 200px;
+    }
+
+    button {
+      padding: 8px 16px;
+      margin-left: 5px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+  <h1>Registro de Usuarios</h1>
+
+  <form id="formulario-usuario">
+    <input type="text" id="nombre" placeholder="Nombre" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="telefono" placeholder="Teléfono" required />
+    <button id="guardar" type="submit">Guardar</button>
+  </form>
+
+  <h2>Usuarios registrados</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+      </tr>
+    </thead>
+    <tbody id="tabla-usuarios">
+      <!-- Usuarios se agregan acá -->
+    </tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
