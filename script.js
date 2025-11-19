@@ -1,12 +1,13 @@
-const API_URL = window.BACKEND_URL + "/users/";
+// URL completa hacia la API Gateway (se carga desde index.html)
+const API_URL = window.BACKEND_URL + "/users";
 
 document.addEventListener("DOMContentLoaded", () => {
   cargarUsuarios();
 
   const formulario = document.getElementById("formulario-usuario");
   formulario.addEventListener("submit", async (e) => {
-    e.preventDefault(); // ✅ Evita recarga
-    await agregarUsuario(); // ✅ POST + GET
+    e.preventDefault(); 
+    await agregarUsuario(); 
   });
 });
 
@@ -17,7 +18,7 @@ async function cargarUsuarios() {
 
     const contentType = response.headers.get("content-type");
     if (!contentType || !contentType.includes("application/json")) {
-      throw new Error("Respuesta no es JSON");
+      throw new Error("La respuesta no es JSON");
     }
 
     const data = await response.json();
@@ -38,6 +39,7 @@ async function cargarUsuarios() {
       `;
       tbody.appendChild(fila);
     });
+
   } catch (error) {
     console.error("Error al cargar usuarios:", error);
     alert("No se pudieron cargar los usuarios.");
@@ -69,8 +71,8 @@ async function agregarUsuario() {
 
     alert("Usuario agregado correctamente.");
     document.getElementById("formulario-usuario").reset();
+    await cargarUsuarios(); 
 
-    await cargarUsuarios(); // ✅ GET inmediato después del POST
   } catch (error) {
     console.error("Error al agregar usuario:", error);
     alert("Hubo un problema al guardar el usuario.");

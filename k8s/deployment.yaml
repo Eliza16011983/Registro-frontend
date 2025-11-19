@@ -16,6 +16,15 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: elizabethdeleonlantean/frontend:latest
+          image: elizabethdeleonlantean/frontend:v2
           ports:
             - containerPort: 80
+            - containerPort: 443
+          volumeMounts:
+            - name: frontend-tls
+              mountPath: /etc/nginx/ssl
+              readOnly: true
+      volumes:
+        - name: frontend-tls
+          secret:
+            secretName: frontend-tls
